@@ -14,11 +14,11 @@ if (isset($_GET["section"]) && $_GET["section"] === "") {
 if(!isset($_GET["section"]) && !isset($_GET["search"])) {
     $elements = $etudiantsTable->findAll();
 } elseif(isset($_GET["section"]) && !isset($_GET["search"])) {
-    $elements = $etudiantsTable->find("section = " . $_GET["section"]);
+    $elements = $etudiantsTable->find("section = " . $_GET["section"] . "OR designation = " . $_GET["section"] . "OR description = " . $_GET["section"]);
 } elseif(!isset($_GET["section"]) && isset($_GET["search"])) {
     $elements = $etudiantsTable->find("name LIKE '%" . $_GET["search"] . "%' OR birthday LIKE '%" . $_GET["search"] . "%'");
 } else {
-    $elements = $etudiantsTable->find("section = " . $_GET["section"] . " AND (name LIKE '%" . $_GET["search"] . "%' OR birthday LIKE '%" . $_GET["search"] . "%')");
+    $elements = $etudiantsTable->find("(section = " . $_GET["section"] . " OR designation = " . $_GET["section"] . " OR description = " . $_GET["section"] . ") AND (name LIKE '%" . $_GET["search"] . "%' OR birthday LIKE '%" . $_GET["search"] . "%')");
 }
 $totalPages = ceil(count($elements) / $pageSize);
 $elements = array_slice($elements, $page * $pageSize, $pageSize);

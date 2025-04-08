@@ -15,7 +15,7 @@ $etudiantName = $etudiant["name"];
 $pageTitle = "Editeur de profil étudiant " . $etudiantName;
 if(isset($_POST["name"])) {
     if(isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
-        $uploadDir = "uploads/img";
+        $uploadDir = "uploads/img/";
         $imageFile = $_FILES["image"];
         $imageTmpName = $imageFile["tmp_name"];
         $imageOriginalName = basename($imageFile["name"]);
