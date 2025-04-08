@@ -36,9 +36,9 @@ class Repository implements IRepository {
         $rep->execute(["id"=>$id]);
     }
 
-    public function find($condition) {
+    public function find($condition, $params = []) {
         $rep = $this->db->prepare("SELECT * FROM {$this->tableName} WHERE {$condition};");
-        $rep->execute([]);
+        $rep->execute($params);
         $elements = $rep->fetchAll(PDO::FETCH_OBJ);
         return $elements;
     }
