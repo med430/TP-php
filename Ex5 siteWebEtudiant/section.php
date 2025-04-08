@@ -11,12 +11,10 @@ $elements = $section->findAll();
 $totalPages = ceil(count($elements) / $pageSize);
 $elements = array_slice($elements, $page * $pageSize, $pageSize);
 ?>
-<canvas id="canvas"></canvas>
-<script src="canvas.js"></script>
 <div class="container alert alert-light">
-    <div class="container absolute x-y-centered">
+    <div class="container fixed x-y-centered">
         <div class="alert alert-light">Liste des sections</div>
-        <a href="">
+        <a href="csvSectionExport.php">
             <button>Copy</button>
         </a>
         <a href="excelSectionExport.php">
@@ -29,7 +27,7 @@ $elements = array_slice($elements, $page * $pageSize, $pageSize);
             <button>PDF</button>
         </a>
         <?php $section->showFilter($elements, $_SESSION["role"]); ?>
-        <div class="container">
+        <div class="container alert alert-light">
             <div class="container relative left">
                 Showing enteries 1 to <?= $totalPages ?>
             </div>

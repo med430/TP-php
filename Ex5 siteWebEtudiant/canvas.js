@@ -51,7 +51,7 @@ class Galaxy {
         let y0 = this.y;
         let angle = 0;
         for(let i = 1; i<=this.nbPoints; i++) {
-            let density = 1;
+            let density = i%2;
             let radius = this.radius * i / this.nbPoints;
             let x = x0 + Math.cos(angle + Math.PI/4) * radius;
             let y = y0 + Math.sin(angle) * radius;
@@ -156,7 +156,7 @@ function animate() {
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
     universe.update();
     universe.draw();
-    setTimeout(100, () => {
+    setTimeout(1000, () => {
         requestAnimationFrame(animate);
     });
 }

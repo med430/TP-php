@@ -38,7 +38,7 @@ include_once 'showEtudiantEdit.php';
                     <option value="<?= $section->id ?>"><?= $section->designation ?></option>
                 <?php endforeach ?>
             </select>
-            <input type="submit" value="Changer le profil de l'étudiant">
+            <input type="submit" value="Ajouter l'étudiant">
         </form>
     </div>
 </div>

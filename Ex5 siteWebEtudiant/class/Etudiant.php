@@ -12,7 +12,7 @@ class Etudiant extends Repository {
     public function showElement($k, $v) {
         if($k === "image") {
             ?>
-                <img src="uploads/img<?= $v ?>" alt="">
+                <img src="uploads/img<?= $v ?>" alt="" width="300">
             <?php
         } elseif($k === "section") {
             $section = new Section();

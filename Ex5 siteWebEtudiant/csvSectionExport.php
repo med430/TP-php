@@ -5,11 +5,11 @@ header('Content-Disposition: attachment;filename="export.csv"');
 
 $sectionsTab = new Section();
 
-$sections = $sectionTab->findAll(PDO::FETCH_ASSOC);
+$sections = $sectionsTab->findAll(PDO::FETCH_ASSOC);
 
 $output = fopen('php://output', 'w');
 
-fputcsv($output, $section->keys());
+fputcsv($output, $sectionsTab->keys());
 
 foreach($sections as $section) {
     fputcsv($output, $section);

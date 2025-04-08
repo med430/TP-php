@@ -17,9 +17,6 @@ if(isset($_POST["user"]) && isset($_POST["password"])) {
     exit();
 }
 ?>
-<canvas id="canvas"></canvas>
-
-<script src="canvas.js"></script>
 
 <div class="container">
     <form action="" method="POST">
@@ -38,7 +35,7 @@ if(isset($_POST["user"]) && isset($_POST["password"])) {
                     <div class="col">
                         password :
                         <br>
-                        <input type="text" class="alert alert-light border border-primary" name="password">
+                        <input type="password" class="alert alert-light border border-primary" name="password">
                     </div>
                 </div>
                 <div class="row">

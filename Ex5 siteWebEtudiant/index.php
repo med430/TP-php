@@ -2,9 +2,11 @@
 $pageTitle = "index";
 include_once 'autoloader.php';
 include_once 'fragments/header.php';
+$queryParams = array_merge($_GET, ["page"=>0, "pageSize"=>10]);
+$queryString = http_build_query($queryParams);
 $etudiantsTable = new Etudiant();
-$page = isset($_GET["page"]) && is_numeric($_GET["page"]) && $_GET["page"] >= 0 ? (int)$_GET["page"] : header('location: index.php?page=0&pageSize=10');
-$pageSize = isset($_GET["pageSize"]) && is_numeric($_GET["pageSize"]) && $_GET["pageSize"] > 0 ? (int)$_GET["pageSize"] : header('location: index.php?page=0&pageSize=10');
+$page = isset($_GET["page"]) && is_numeric($_GET["page"]) && $_GET["page"] >= 0 ? (int)$_GET["page"] : header("location: index.php?$queryString");
+$pageSize = isset($_GET["pageSize"]) && is_numeric($_GET["pageSize"]) && $_GET["pageSize"] > 0 ? (int)$_GET["pageSize"] : header("location: index.php?$queryString");
 
 if (isset($_GET["section"]) && $_GET["section"] === "") {
     unset($_GET["section"]);
@@ -28,11 +30,8 @@ if ($page < 0) {
     $page = 0;
 }
 ?>
-<canvas id="canvas"></canvas>
 
-<script src="canvas.js"></script>
-
-<div class="container relative x-y-centered">
+<div class="container relative x-centered">
     <div class="alert alert-light">Liste des étudiants</div>
     <form action="" method="GET">
         <div class="container bg-light">
@@ -53,7 +52,7 @@ if ($page < 0) {
             </div>
         </div>
     </form>
-    <a href="">
+    <a href="csvEtudiantExport.php">
         <button>Copy</button>
     </a>
     <a href="excelEtudiantExport.php">
@@ -68,7 +67,7 @@ if ($page < 0) {
     <?php
     $etudiantsTable->showFilter($elements, $_SESSION["role"]);
     ?>
-    <div class="container">
+    <div class="container alert alert-light">
         <div class="container relative left">
             Showing enteries 1 to <?= $totalPages ?>
         </div>
