@@ -16,7 +16,7 @@ if($etudiant == false) {
 }
 $etudiantsTab->delete($_GET["id"]);
 ?>
-<div class="container absolute x-y-centered">
+<div class="container alert alert-light absolute x-y-centered">
     <?= $etudiant["name"] ?>
     >
     <br>

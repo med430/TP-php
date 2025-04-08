@@ -37,7 +37,7 @@ include_once 'fragments/header.php';
 include_once 'showEtudiantEdit.php';
 ?>
 
-<div class="container absolute x-y-centered">
+<div class="container alert alert-light absolute x-y-centered">
     <?php showEtudiantEdit($etudiant); ?>
 </div>
 

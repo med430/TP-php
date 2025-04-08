@@ -14,11 +14,11 @@ if (isset($_GET["section"]) && $_GET["section"] === "") {
 if(!isset($_GET["section"]) && !isset($_GET["search"])) {
     $elements = $etudiantsTable->findAll();
 } elseif(isset($_GET["section"]) && !isset($_GET["search"])) {
-    $elements = $etudiantsTable->find("section = :section OR (SELECT designation FROM section S WHERE S.id = section) = :section OR (SELECT description FROM section S WHERE S.id = section) = :section", ["section"=>$_GET("section")]);
+    $elements = $etudiantsTable->find("section = :section OR (SELECT designation FROM section S WHERE S.id = section) = :section OR (SELECT description FROM section S WHERE S.id = section) = :section", ["section"=>$_GET["section"]]);
 } elseif(!isset($_GET["section"]) && isset($_GET["search"])) {
     $elements = $etudiantsTable->find("name LIKE '%" . $_GET["search"] . "%' OR birthday LIKE '%" . $_GET["search"] . "%'");
 } else {
-    $elements = $etudiantsTable->find("section = :section OR (SELECT designation FROM section S WHERE S.id = section) = :section OR (SELECT description FROM section S WHERE S.id = section) = :section AND (name LIKE '%" . $_GET["search"] . "%' OR birthday LIKE '%" . $_GET["search"] . "%')", ["section"=>$_GET["section"]]);
+    $elements = $etudiantsTable->find("(section = :section OR (SELECT designation FROM section S WHERE S.id = section) = :section OR (SELECT description FROM section S WHERE S.id = section) = :section) AND (name LIKE '%" . $_GET["search"] . "%' OR birthday LIKE '%" . $_GET["search"] . "%')", ["section"=>$_GET["section"]]);
 }
 $totalPages = ceil(count($elements) / $pageSize);
 $elements = array_slice($elements, $page * $pageSize, $pageSize);

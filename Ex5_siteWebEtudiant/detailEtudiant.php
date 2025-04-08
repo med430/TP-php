@@ -15,7 +15,7 @@ $sectionEtudiant = $sectionsTab->findById($etudiant["section"]);
 $birthdayEtudiant = $etudiant["birthday"];
 $designationSection = $sectionEtudiant["designation"];
 ?>
-<div class="container absolute x-y-centered">
+<div class="container alert alert-light absolute x-y-centered">
     >
     <br>
     <?= $designationSection ?>
