@@ -12,7 +12,7 @@ $totalPages = ceil(count($elements) / $pageSize);
 $elements = array_slice($elements, $page * $pageSize, $pageSize);
 ?>
 <div class="container alert alert-light">
-    <div class="container fixed x-y-centered">
+    <div class="container fixed x-centered">
         <div class="alert alert-light">Liste des sections</div>
         <a href="csvSectionExport.php">
             <button>Copy</button>
