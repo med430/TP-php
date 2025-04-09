@@ -3,8 +3,7 @@
     if(isset($_GET["id"])) {
         $id = $_GET["id"];
         $db = ConnexionBD::getInstance();
-        $student = $db->prepare("SELECT * FROM student WHERE id = :id");
-        $student->execute(["id"=>$id]);
+        $student = $db->query("SELECT * FROM student WHERE id = $id");
         $student = $student->fetch(PDO::FETCH_ASSOC);
         $name = $student["name"];
         $dateDeNaissance = $student["date_de_naissance"];

@@ -3,17 +3,14 @@ include_once "autoloader.php";
 
 $db = ConnexionBD::getInstance();
 
-$stmt = $db->prepare("DESCRIBE student");
-$stmt->execute([]);
+$stmt = $db->query("DESCRIBE student");
 $columns = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $keys = [];
 foreach ($columns as $column) {
     $keys[] = $column['Field'];
 }
 
-$elements = $db->prepare("SELECT * FROM student");
-
-$elements->execute([]);
+$elements = $db->query("SELECT * FROM student");
 
 $elements = $elements->fetchAll(PDO::FETCH_OBJ);
 
